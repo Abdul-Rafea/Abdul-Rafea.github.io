@@ -1,0 +1,503 @@
+:root {
+	--fira-sans: "Fira Sans",  sans-serif;
+	--black: #000000;
+	--white: #FFFFF0;
+	--red1: #830000; 
+	--red2: #BC0202;
+	--red2: #BC0202;
+	--green : #00FF67;
+	--rounded-normal: 20px;
+}
+
+html, body {
+	position: relative;
+	min-height: 100vh;
+	margin: 0;
+	padding: 0;
+	overflow-x: hidden;
+	scroll-behavior: smooth;
+    background-color: var(--black);
+}
+
+a {
+	text-decoration: none;
+}
+
+h1, h2, h3, p {
+	margin: 0;
+}
+
+button {
+	border: none;
+	padding: 0;
+}
+
+.nav-container {
+	position: absolute;
+	width: 100%;
+    padding: 20px;
+	box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-container2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-menu {
+	position: relative;
+}
+
+.nav-menu-toggle {
+	display: none;
+	border: 0;
+	font: inherit;
+}
+
+.nav-element {
+    font-family: var(--fira-sans);
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--white);
+}
+
+@media (max-width: 768px) {
+	.nav-container {
+		padding: 16px;
+	}
+
+	.nav-menu-toggle {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		padding: 10px 14px;
+		border-radius: 10px;
+		background: var(--red1);
+		color: var(--white);
+		font-family: var(--fira-sans);
+		font-size: 18px;
+		cursor: pointer;
+	}
+
+	.nav-menu-chevron {
+		width: 7px;
+		height: 7px;
+		margin-top: -4px;
+		transform: rotate(45deg);
+		border-right: 2px solid currentColor;
+		border-bottom: 2px solid currentColor;
+	}
+
+	.nav-menu-toggle[aria-expanded="true"] .nav-menu-chevron {
+		margin-top: 4px;
+		transform: rotate(225deg);
+	}
+
+	.nav-menu > .nav-container2 {
+		position: absolute;
+		top: calc(100% + 8px);
+		right: 0;
+		z-index: 2;
+		display: none;
+		min-width: 180px;
+		padding: 8px;
+		box-sizing: border-box;
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+		border-radius: 10px;
+		background: var(--red1);
+	}
+
+	.nav-menu > .nav-container2.is-open {
+		display: flex;
+	}
+
+	.nav-container2 .nav-element {
+		display: block;
+		padding: 10px 12px;
+		border-radius: 6px;
+	}
+
+	.nav-container2 .nav-element:hover,
+	.nav-container2 .nav-element:focus-visible {
+		background: var(--red2);
+	}
+}
+
+.section {
+	width: 100%;
+	min-height: 100vh;
+	min-height: 100svh;
+	padding: 100px 5vw 48px;
+	margin-top: 0;
+	box-sizing: border-box;
+	scroll-margin-top: 80px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 20px;
+}
+
+.section-heading {
+	font-family: var(--fira-sans);
+	font-size: 40px;
+	font-weight: 600;
+	color: var(--white);
+}
+
+/* Hero Section */
+
+.hero-section {
+	min-height: 100vh;
+	min-height: 100vh;
+	min-height: 100svh;
+	padding: 100px 5vw 48px;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: clamp(24px, 4vw, 64px);
+}
+
+.professional-pic {
+	width: min(40vw, 480px);
+	aspect-ratio: 1;
+	height: auto;
+	object-fit: cover;
+	flex-shrink: 0;
+}
+
+.hero-heading-container {
+	width: min(100%, 620px);
+	min-width: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: start;
+	gap: 10px;
+}
+
+.hero-heading-name {
+	font-family: var(--fira-sans);
+	font-size: 20px;
+	font-weight: 400;
+	color: var(--white);
+}
+
+.hero-heading {
+	font-family: var(--fira-sans);
+	font-size: clamp(2rem, 4vw, 2.5rem);
+	font-weight: 500;
+	color: var(--white);
+	line-height: 1.1;
+}
+
+.hero-location-container {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.hero-location-svg {
+	width: 30px;
+	fill: var(--green);
+}
+
+.hero-location {
+	font-family: var(--fira-sans);
+	font-size: 20px;
+	font-weight: 400;
+	color: var(--white);
+}
+
+.hero-description {
+	font-family: var(--fira-sans);
+	font-size: 20px;
+	font-weight: 400;
+	color: var(--white);
+	line-height: 1.5;
+}
+
+/* Projetcs Section */
+
+.projects-section-container {
+	width: min(100%, 1100px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 10px;
+}
+
+.project-container {
+	width: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+	border-radius: var(--rounded-normal);
+	background-color: var(--red1);
+	display: flex;
+	flex-direction: column;
+}
+
+.project-heading {
+	font-family: var(--fira-sans);
+	font-size: clamp(1.5rem, 3vw, 1.875rem);
+	font-weight: 600;
+	color: var(--white);
+}
+
+.project-description {
+	font-family: var(--fira-sans);
+	font-size: clamp(1rem, 1.6vw, 1.25rem);
+	font-weight: 400;
+	color: var(--white);
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+
+.project-button {
+	width: fit-content;
+	max-width: 100%;
+	min-width: 160px;
+	margin-top: 16px;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: var(--rounded-normal);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--black);
+
+	font-family: var(--fira-sans);
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--white);
+}
+
+.project-button:hover {
+	background-color: var(--white);
+	color: var(--black);
+}
+
+.stack-container {
+	display: flex;
+	justify-content: start;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.stack-logo {
+	width: 50px;
+}
+
+/* Skills Section */
+.skills-section-container {
+	width: min(100%, 1100px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 16px;
+}
+
+.skills-container {
+	flex: 1 1 260px;
+	min-width: 0;
+	padding: 20px;
+	border-radius: var(--rounded-normal);
+	background: var(--red1);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+}
+
+.skills-heading {
+	font-family: var(--fira-sans);
+	font-size: clamp(1.5rem, 3vw, 1.875rem);
+	font-weight: 600;
+	color: var(--white);
+}
+
+.skills-logos-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 10px;
+}
+
+.skills-logo-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.skills-logo {
+	width: clamp(48px, 6vw, 75px);
+	height: auto;
+}
+
+.skills-logo-heading {
+	font-family: var(--fira-sans);
+	font-size: 20px;
+	font-weight: 400;
+	color: var(--white);
+}
+
+/* Education Section */
+
+.education-section-container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	width: min(90%, 1100px);
+	margin: 0;
+	padding: 0;
+	position: relative;
+	list-style: none;
+}
+
+.education-section-container::before {
+	content: "";
+	position: absolute;
+	top: 12px;
+	bottom: 12px;
+	left: 24px;
+	width: 3px;
+	background: var(--white);
+	z-index: 1;
+}
+
+.education-container {
+	padding: 20px 20px 20px 52px;
+	box-sizing: border-box;
+	position: relative;
+	border-radius: var(--rounded-normal);
+	background: var(--red1);
+	text-align: left;
+}
+
+.education-timeline-dot {
+	position: absolute;
+	top: 12px;
+	left: 13px;
+	width: 24px;
+	height: 24px;
+	box-sizing: border-box;
+	border-radius: 50%;
+	background: var(--white);
+	z-index: 2;
+}
+
+.education-heading {
+	font-family: var(--fira-sans);
+	font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+	font-weight: 600;
+	color: var(--white);
+}
+
+.education-description {
+	font-family: var(--fira-sans);
+	font-size: clamp(1rem, 1.8vw, 1.125rem);
+	font-weight: 400;
+	color: var(--white);
+	line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+	.hero-section {
+		flex-direction: column;
+		gap: 32px;
+	}
+
+	.professional-pic {
+		width: min(60vw, 380px);
+	}
+
+	.hero-heading-container {
+		width: min(100%, 620px);
+	}
+}
+
+@media (max-width: 768px) {
+	.section {
+		padding: 88px 6vw 40px;
+		gap: 20px;
+	}
+
+	.section-heading {
+		font-size: clamp(2rem, 7vw, 2.5rem);
+	}
+
+	.hero-section {
+		min-height: auto;
+		padding: 100px 6vw 48px;
+		align-items: flex-start;
+		gap: 24px;
+	}
+
+	.professional-pic {
+		width: min(68vw, 320px);
+		align-self: center;
+	}
+
+	.hero-heading-container {
+		width: 100%;
+	}
+
+	.hero-heading {
+		font-size: clamp(1.9rem, 8vw, 2.5rem);
+	}
+
+	.hero-description {
+		font-size: 1rem;
+	}
+
+	.projects-section-container,
+	.skills-section-container,
+	.education-section-container {
+		width: 100%;
+	}
+
+	.project-container {
+		padding: clamp(16px, 5vw, 24px);
+	}
+
+	.project-description {
+		font-size: 1rem;
+	}
+
+	.project-button {
+		min-width: 0;
+	}
+
+	.skills-container {
+		flex-basis: 100%;
+	}
+
+	.skills-logo {
+		width: 64px;
+	}
+
+	.education-container {
+		padding: 20px 16px 20px 52px;
+	}
+
+	.education-heading {
+		font-size: clamp(1.1rem, 5vw, 1.4rem);
+	}
+
+	.education-description {
+		font-size: 1rem;
+	}
+}
+

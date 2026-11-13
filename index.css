@@ -28,11 +28,11 @@
 html, body {
 	position: relative;
 	min-height: 100vh;
+	min-height: 100svh;
 	margin: 0;
 	padding: 0;
 	overflow-x: hidden;
 	scroll-behavior: smooth;
-
 }
 
 a {
@@ -53,6 +53,7 @@ button {
 	position: absolute;
 	width: 100%;
 	min-height: 100vh;
+	min-height: 100svh;
 	padding: 50px;
 	clip-path: polygon(0% 0%, 70% 0%, 30% 100%, 0% 100%);
 	
@@ -72,6 +73,7 @@ button {
 	right: 0;
 	width: 100%;
 	min-height: 100vh;
+	min-height: 100svh;
 	padding: 50px;
 	clip-path: polygon(70% 0%, 30% 100%, 100% 100%, 100% 0%);
 
@@ -85,16 +87,18 @@ button {
 	transition: clip-path 300ms ease;
 }
 
-.professional-container:hover {
-	z-index: 1;
-	clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 0% 100%);
-	transition: clip-path 300ms ease;
-}
+@media (hover: hover) and (pointer: fine) {
+	.professional-container:hover {
+		z-index: 1;
+		clip-path: polygon(0% 0%, 100% 0%, 60% 100%, 0% 100%);
+		transition: clip-path 300ms ease;
+	}
 
-.other-container:hover {
-	z-index: 10;
-	clip-path: polygon(40% 0%, 0% 100%, 100% 100%, 100% 0%);
-	transition: clip-path 300ms ease;
+	.other-container:hover {
+		z-index: 10;
+		clip-path: polygon(40% 0%, 0% 100%, 100% 100%, 100% 0%);
+		transition: clip-path 300ms ease;
+	}
 }
 
 .professional {
@@ -115,21 +119,22 @@ button {
 
 .name-heading {
 	font-family: var(--fira-sans);
-	font-size: 30px;
+	font-size: clamp(1.25rem, 2.2vw, 1.875rem);
 	font-weight: 400;
 	color: var(--white);
 }
 
 .profession-heading {
 	font-family: var(--fira-sans);
-	font-size: 60px;
+	font-size: clamp(2.5rem, 4.5vw, 3.75rem);
+	line-height: 1.08;
 	font-weight: 500;
 	color: var(--white);
 }
 
 .placeholder {
 	font-family: var(--fira-sans);
-	font-size: 30px;
+	font-size: clamp(1.25rem, 2.2vw, 1.875rem);
 	font-weight: 400;
 	color: var(--white);
 	opacity: 50%;
@@ -139,18 +144,43 @@ button {
 	display: none;
 	justify-content: start;
 	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px;
 }
 
 .logo {
-	width: 75px;
+	width: clamp(48px, 6vw, 75px);
+	height: auto;
 }
 
 .description {
 	display: none;
 	font-family: var(--fira-sans);
-	font-size: 30px;
+	font-size: clamp(1.125rem, 2.2vw, 1.875rem);
 	font-weight: 400;
 	color: var(--white);
+	line-height: 1.5;
+	overflow-wrap: anywhere;
+}
+
+.professional-container.is-active .logo-container,
+.other-container.is-active .logo-container {
+	display: flex;
+}
+
+.professional-container.is-active .professional-button,
+.other-container.is-active .other-button {
+	display: inline-flex;
+}
+
+.professional-container.is-active .placeholder,
+.other-container.is-active .placeholder {
+	display: none;
+}
+
+.professional-container.is-active .description,
+.other-container.is-active .description {
+	display: block;
 }
 
 .professional-button, .other-button {
@@ -160,8 +190,9 @@ button {
 	padding-left: 30px;
 	padding-right: 30px;
 	border-radius: var(--rounded-normal);
+	
 	font-family: var(--fira-sans);
-	font-size: 30px;
+	font-size: clamp(1.125rem, 2.2vw, 1.875rem);
 	font-weight: 400;
 	color: var(--white);
 }
@@ -182,4 +213,112 @@ button {
 .other-button:hover {
 	background-color: var(--white);
 	color: var(--red1);
+}
+
+/* Hero Section */
+.hero-section {
+	display: flex;
+	flex-direction: column;
+}
+
+@media (max-width: 1000px) and (hover: hover) and (pointer: fine) {
+	.professional-container,
+	.other-container {
+		padding: 32px;
+	}
+
+	.professional,
+	.other {
+		width: 58%;
+	}
+}
+
+@media (max-width: 800px), (hover: none) and (pointer: coarse) {
+	.professional-container,
+	.other-container {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		min-height: 100vh;
+		min-height: 100svh;
+		padding: clamp(16px, 5vw, 36px);
+		transition: none;
+	}
+
+	.professional-container {
+		left: 0;
+		justify-content: flex-start;
+		align-items: flex-start;
+	}
+
+	.other-container {
+		right: 0;
+		justify-content: flex-end;
+		align-items: flex-end;
+	}
+
+	.professional,
+	.other {
+		width: 58%;
+		gap: clamp(6px, 2vw, 12px);
+	}
+
+	.professional {
+		align-items: flex-start;
+	}
+
+	.other {
+		align-items: flex-end;
+		text-align: right;
+	}
+
+	.name-heading {
+		font-size: clamp(0.875rem, 3vw, 1.25rem);
+	}
+
+	.profession-heading {
+		font-size: clamp(1.25rem, 5.6vw, 2.4rem);
+		line-height: 1.05;
+	}
+
+	.placeholder {
+		display: none;
+	}
+
+	.logo-container {
+		display: flex;
+		gap: clamp(4px, 2vw, 12px);
+	}
+
+	.logo {
+		width: clamp(28px, 8vw, 56px);
+	}
+
+	.description {
+		display: block;
+		max-width: 32ch;
+		font-size: clamp(0.75rem, 3vw, 1rem);
+		line-height: 1.35;
+	}
+
+	.professional-button,
+	.other-button {
+		display: inline-flex;
+		width: fit-content;
+		max-width: 100%;
+		margin-top: 8px;
+		padding: 8px 12px;
+		font-size: clamp(0.75rem, 3vw, 1rem);
+	}
+}
+
+@media (max-height: 500px) and (hover: none) and (pointer: coarse) {
+	.logo-container,
+	.description {
+		display: none;
+	}
+
+	.profession-heading {
+		font-size: clamp(1.25rem, 4vw, 1.8rem);
+	}
 }
